@@ -13,7 +13,9 @@ router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
 // });
 
-router.get('/login', UsersControllerObj.login);
+router.get('/admin/login', UsersControllerObj.login);
 router.get('/loginCallBack', UsersControllerObj.loginCallBack);
+
+router.post('/', UsersControllerObj.insertUser);
 
 module.exports = router;

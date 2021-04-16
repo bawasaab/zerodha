@@ -9,12 +9,27 @@ const ZerodhaLibsObj = new Zerodha();
 const ZerodhaService = require('../services/').ZerodhaService;
 const ZerodhaServiceObj = new ZerodhaService();
 
+const UserService = require('../services/').UserService;
+const UserServiceObj = new UserService();
+
+let Validator = require('validatorjs');
+
 let $this;
 
 module.exports = class UsersController {
 
     constructor() {
         $this = this;
+    }
+
+    getFirstError( validation ) {
+        let errors = validation.errors.all();
+        let firstErr = '';
+        for ( const property in errors ) {
+            firstErr = errors[property];
+            break;
+        }
+        return firstErr[0];
     }
 
     sendResponse( res, in_data ) {
@@ -104,5 +119,44 @@ module.exports = class UsersController {
                 msg: err
             } );
         });
+    }
+
+    insertUser( req, res, next ) {
+
+        try {
+
+            let in_data = req.body;
+            let rules = {
+                first_name: 'required',
+                email: 'required|email',
+                password: 'required|min:6'
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return $this.sendException( res, {
+                    msg : $this.getFirstError( validation )
+                } );
+            }
+
+            UserServiceObj.insertUser( in_data )
+            .then( (result) => {
+                return $this.sendResponse( res, {
+                    msg : 'Record inserted successfully',
+                    data : result
+                } );
+            } )
+            .catch( (ex) => {
+                return $this.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+            
+        } catch( ex ) {
+
+            return $this.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
     }
 }

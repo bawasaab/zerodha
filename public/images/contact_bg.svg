@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1271" viewBox="0 0 1920 1271">
+  <defs>
+    <clipPath id="clip-Artboard_1">
+      <rect width="1920" height="1271"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_1" data-name="Artboard – 1" clip-path="url(#clip-Artboard_1)">
+    <rect width="1920" height="1271" fill="#fff"/>
+    <g id="Group_30" data-name="Group 30" transform="translate(-2231 -9409)">
+      <path id="Path_37660" data-name="Path 37660" d="M1116.31,333.21v183l-158.483-91.5Z" transform="translate(2185.79 10732.068) rotate(-90)" fill="#0864b1"/>
+      <path id="Path_37522" data-name="Path 37522" d="M1120.46,333.21v187.8l-162.638-93.9Z" transform="translate(3795.327 10020.827) rotate(180)" fill="none" stroke="#0864b1" stroke-width="1"/>
+      <path id="Path_37523" data-name="Path 37523" d="M1053.82,333.21V444.048l-95.989-55.419Z" transform="translate(3145.214 10753.98) rotate(-144.975)" fill="none" stroke="#0864b1" stroke-width="1"/>
+      <path id="Path_37524" data-name="Path 37524" d="M324.949,0V375.219L0,187.609Z" transform="matrix(-0.53, -0.848, 0.848, -0.53, 2289.589, 9842.227)" fill="none" stroke="#0864b1" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

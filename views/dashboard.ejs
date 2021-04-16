@@ -1,0 +1,746 @@
+<%- include("partials/header") %>
+	<!-- buy Modal -->
+	<div class="modal fade" id="exampleModalbuy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content buy_pop_up">
+				<div class="modal-body">
+					<div class="buy_pop_up_head">
+						<h4>Buy INFY<span>NSE </span> x  1 Qty</h4>
+						<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+						</label>
+						<a href="#"><img src="/images/i_btn.svg"/></a>
+						<div class="buy_pop_second_line">
+							<input type="radio"/> <label>BSE: 1248.40</label>
+							<input type="radio" checked/> <label>NSE: 1248.40</label>
+						</div>
+					</div>
+					<div class="buy_pop_up_tabs">
+						<div class="buy_pop_tabs_sec">
+							<button class="acvite">Regular</button>
+							<button>Cover</button>
+							<button>Bracket</button>
+							<button>AMO</button>
+						</div>
+						<div class="buy_pop_tab_panel">
+							<div class="buy_pop_tab_panel_top">
+								<input type="radio"/> <label>Intraday <span>MIS</span></label>
+								<input type="radio" checked/> <label>Longterm <span>CNC</span></label>
+							</div>
+							<div class="buy_pop_tab_panel_second">
+								<span>
+									<label>Qty</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">1</option>
+										<option value="">2</option>
+										<option value="">3</option>
+									</select>
+								</span>
+								<span>
+									<label>Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">1248</option>
+										<option value="">1248</option>
+										<option value="">1248</option>
+									</select>
+								</span>
+								<span>
+									<label>Trigger Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">0</option>
+										<option value="">0</option>
+										<option value="">0</option>
+									</select>
+								</span>
+								<div class="more_div_buy_pop">
+									<button>more <i class="fas fa-chevron-down"></i></button>
+									<span>
+									<input type="radio"/>
+									<label>Market</label>
+									<input type="radio"/>
+									<label>Limit</label>
+									</span>
+									<span>
+									<input type="radio"/>
+									<label>SL</label>
+									<input type="radio"/>
+									<label>SL-M</label>
+									</span>
+								</div>
+								<div class="gtt_div_buy_pop">
+									<img src="/images/gtt_icon.svg"/>
+									<div class="buy_pop_up_input">
+										<input type="checkbox"/>
+										<label>Stoploss</label>
+										<input type="text"/>
+										<p>%</p>
+									</div>
+									<div class="buy_pop_up_input">
+										<input type="checkbox"/>
+										<label>Target</label>
+										<input type="text"/>
+										<p>%</p>
+									</div>
+									<a href="#">Learn more</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer buy_pop_up_footer">
+					<p>Margin required</p>
+					<a href="#"><img src="/images/i_icon_blue.svg"/></a>
+					<p>1248.00</p>
+					<div class="buy_pop_right_btn">
+						<button type="button" class="buy_btn">Buy</button>
+						<button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- sell Modal -->
+	<div class="modal fade" id="exampleModalsell" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content buy_pop_up">
+				<div class="modal-body">
+					<div class="buy_pop_up_head sell_pop_up_head">
+						<h4>SELL INFY<span>NSE </span> x  1 Qty</h4>
+						<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+						</label>
+						<a href="#"><img src="/images/i_btn.svg"/></a>
+						<div class="buy_pop_second_line">
+							<input type="radio"/> <label>BSE: 1248.40</label>
+							<input type="radio" checked/> <label>NSE: 1248.40</label>
+						</div>
+					</div>
+					<div class="buy_pop_up_tabs">
+						<div class="buy_pop_tabs_sec sell_pop_tabs_sec">
+							<button class="acvite">Regular</button>
+							<button>Cover</button>
+							<button>Bracket</button>
+							<button>AMO</button>
+						</div>
+						<div class="buy_pop_tab_panel">
+							<div class="buy_pop_tab_panel_top">
+								<input type="radio"/> <label>Intraday <span>MIS</span></label>
+								<input type="radio" checked/> <label>Longterm <span>CNC</span></label>
+							</div>
+							<div class="buy_pop_tab_panel_second">
+								<span>
+									<label>Qty</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">1</option>
+										<option value="">2</option>
+										<option value="">3</option>
+									</select>
+								</span>
+								<span>
+									<label>Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">1248</option>
+										<option value="">1248</option>
+										<option value="">1248</option>
+									</select>
+								</span>
+								<span>
+									<label>Trigger Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">0</option>
+										<option value="">0</option>
+										<option value="">0</option>
+									</select>
+								</span>
+								<div class="more_div_buy_pop">
+									<button>more <i class="fas fa-chevron-down"></i></button>
+									<span>
+									<input type="radio"/>
+									<label>Market</label>
+									<input type="radio"/>
+									<label>Limit</label>
+									</span>
+									<span>
+									<input type="radio"/>
+									<label>SL</label>
+									<input type="radio"/>
+									<label>SL-M</label>
+									</span>
+								</div>
+								<div class="gtt_div_buy_pop">
+									<img src="/images/gtt_icon.svg"/>
+									<div class="buy_pop_up_input">
+										<input type="checkbox"/>
+										<label>Stoploss</label>
+										<input type="text"/>
+										<p>%</p>
+									</div>
+									<div class="buy_pop_up_input">
+										<input type="checkbox"/>
+										<label>Target</label>
+										<input type="text"/>
+										<p>%</p>
+									</div>
+									<a href="#">Learn more</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer buy_pop_up_footer">
+					<p>Margin required</p>
+					<a href="#"><img src="/images/i_icon_blue.svg"/></a>
+					<p>1248.00</p>
+					<div class="buy_pop_right_btn">
+						<button type="button" class="buy_btn sell_btn">Sell</button>
+						<button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- create gtt_pop_up Modal -->
+	<div class="modal fade" id="exampleModalbuy_pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document" style="max-width: 650px;margin: 4rem auto !important;">
+			<div class="modal-content buy_pop_up">
+				<div class="modal-body">
+					<div class="buy_pop_up_head depth_pop_head sell_pop_up_heat">
+						<h4>TATACHEM <span>NSE</span> <button>₹502.50</button></h4>
+						<span class="sell_pop_up_span"><a href="#"><img src="/images/i_icon_blue.svg" /></a> </span>
+					</div>
+					<div class="buy_pop_up_tabs">
+						<div class="buy_pop_tabs_sec sell_pop_tabs_sec type_sell_pop-up">
+							<div class="transaction-type_sell_pop-up">
+								<h5>Transaction type</h5>
+								<div class="buy_pop_tab_panel_top transition_trigger_type">
+									<input type="radio" checked/> <label>Buy</label>
+									<input type="radio"/> <label>Sell</label>
+								</div>
+							</div>
+							<div class="trigger-type_sell_pop-up">
+								<h5>Trigger type</h5>
+								<div class="buy_pop_tab_panel_top transition_trigger_type">
+									<input type="radio" checked/> <label>Single</label>
+									<input type="radio"/> <label>OCO</label>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+									invidunt ut labore et dolore magna aliquyam erat,Lorem ipsum dolor sit amet, consetetur 
+									sadipscing elitr, sed diam nonumy eirmod tempor invidunt.,
+								</p>
+							</div>
+						</div>
+						<div class="buy_pop_tab_panel">
+							<div class="buy_pop_tab_panel_second transition_trigger_type_four_sec transition_trigger_type_four_sec_brdr">
+								<div class="transition_trigger_top_bar">
+									<span>
+									.
+									</span>
+									<span>
+									<input type="radio" checked/> <label>CNC</label>
+									</span>
+									<span>
+									<input type="radio" checked/> <label>LIMIT</label>
+									</span>
+								</div>
+								<span>
+									<label>Trigger Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">1</option>
+										<option value="">2</option>
+										<option value="">3</option>
+									</select>
+								</span>
+								<span>
+								<label class="place_type">Places Order <i class="fas fa-arrow-right"></i></label>
+								</span>
+								<span>
+									<label>Qty.</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">0</option>
+										<option value="">0</option>
+										<option value="">0</option>
+									</select>
+								</span>
+								<span>
+									<label>Price</label>
+									<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										<option selected=""></option>
+										<option value="">0</option>
+										<option value="">0</option>
+										<option value="">0</option>
+									</select>
+								</span>
+								<div class="transition_trigger_ltp">
+									<span>5</span>
+									<h6>% of LTP</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer buy_pop_up_footer sell_pop_holding">
+					<p>By placing i agree to the <a href="#" style="float: initial;">terms</a> and accept that trigger executions are not guaranteed. The Trigger expires on 2022-02-01</p>
+					<div class="buy_pop_right_btn">
+						<button type="button" class="buy_btn buy_btn">Place</button>
+						<button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- fundamental_pop_up Modal -->
+	<div class="modal fade" id="exampleModalfunda_pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document" style="max-width: 650px;margin: 4rem auto !important;">
+			<div class="modal-content buy_pop_up">
+				<div class="modal-body">
+					<div class="buy_pop_up_head depth_pop_head sell_pop_up_heat fundamental_pop_top_head">
+						<h4>Indian Railway Catering and Tourisim Cor...</h4>
+						<span>LARGE CAP</span>
+						<span class="fundamental_pop_top_right_btn"><a href="#">See Detailed info</a> </span>
+						<div class="fundamental_pop_top_head_bar">
+							<h6><img src="/images/bank.png"/>Communication Services <i class="fas fa-long-arrow-alt-right"></i></h6>
+							<span>Online services</span>
+						</div>
+					</div>
+					<div class="buy_pop_up_tabs">
+						<div class="buy_pop_tabs_sec fundamentals_pop_tabs_sec">
+							<button class="acvite">Overview</button>
+							<button>Events</button>
+							<button>Smallcases</button>
+							<button>News</button>
+						</div>
+						<div class="buy_pop_tab_panel">
+							<div class="fundamental_tracker_chart_area">
+								<div class="fundamental_tracker_sec_left">
+									<div class="fundamental_tracker_sec_left_top_headin">
+										<h4>Indian Railway Catering and Tourism Corporat...<a>Read more</a></h4>
+										<h6>1Y Price Trend</h6>
+										<img src="/images/funda_chart.svg"/>
+										<h6>No. of Shareholders <span>5.9L</span></h6>
+									</div>
+								</div>
+								<div class="fundamental_tracker_sec_right">
+									<div class="fundamental_tracker_sec_right_row fundamental_tracker_sec_right_row_green">
+										<span>
+											<p>1M Return</p>
+											<h5>3.21%</h5>
+										</span>
+										<span>
+											<p>1Y Return</p>
+											<h5>30.43%</h5>
+										</span>
+										<span>
+											<p>B</p>
+											<h5>-</h5>
+										</span>
+										<span>
+											<p>Mkt. Cap (Cr)</p>
+											<h5>23,297</h5>
+										</span>
+									</div>
+									<div class="fundamental_tracker_sec_right_row">
+										<span>
+											<p>52W Hight</p>
+											<h5>1,994.00</h5>
+										</span>
+										<span>
+											<p>PE</p>
+											<h5>44.08</h5>
+										</span>
+										<span>
+											<p>PB</p>
+											<h5>17.55</h5>
+										</span>
+										<span>
+											<p>Div. Yield</p>
+											<h5>0.86%</h5>
+										</span>
+									</div>
+									<div class="fundamental_tracker_sec_right_row">
+										<span>
+											<p>52W Hight</p>
+											<h5>774.65</h5>
+										</span>
+										<span>
+											<p>Sector PE</p>
+											<h5>44.08</h5>
+										</span>
+										<span>
+											<p>Sector PB</p>
+											<h5>17.55</h5>
+										</span>
+										<span>
+											<p>Sector DY</p>
+											<h5>1.08%</h5>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="fundamental_btm_tracker">
+								<img src="/images/pharma_icon.svg"/>
+								<div class="text_sec_tracker">
+									<h4>Pharma Tracker</h4>
+									<p>Companies to efficiantly track and invest in the Pharma Sector</p>
+								</div>
+								<div class="text_two_sec_tracker">
+									<h4>CAGR
+										<span>17.04%</span>
+									</h4>
+								</div>
+								<a href="#">
+								View
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer buy_pop_up_footer" style="background: no-repeat;">
+					<div class="buy_pop_right_btn depth_btm_right" style="float: right;">
+						<button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalbuy_pop">Buy</button>
+						<button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalsell_pop">Sell</button>
+						<button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- technical_pop_up Modal -->
+	<div class="modal fade" id="exampleModaltech_pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document" style="max-width: 650px;margin: 4rem auto !important;">
+			<div class="modal-content buy_pop_up">
+				<div class="modal-body">
+					<div class="buy_pop_up_head depth_pop_head sell_pop_up_heat fundamental_pop_top_head technical_pop_top_head">
+						<h4>BAJAJFINSV <span>(NSE)</span></h4>
+						<span class="fundamental_pop_top_right_btn" style="text-align: right;"><img src="/images/streak_icon.svg"/></span>
+						<div class="fundamental_pop_top_head_bar fundamental_pop_top_head_ba-btns">
+							<button>1 min</button>
+							<button>3 min</button>
+							<button>5 min</button>
+							<button>15 min</button>
+							<button>30 min</button>
+							<button>Hour</button>
+							<button>Day</button>
+						</div>
+					</div>
+					<div class="buy_pop_up_tabs">
+						<div class="buy_pop_tabs_sec fundamentals_pop_tabs_sec">
+							<button class="acvite">Summary</button>
+							<button>Technicals</button>
+							<button>Strategies</button>
+							<button>Scanners</button>
+						</div>
+						<div class="buy_pop_tab_panel">
+							<div class="fundamental_tracker_chart_area">
+								<div class="fundamental_tracker_sec_left tech_tracker_sec_left">
+									<img src="/images/blush_chart.svg"/>
+								</div>
+								<div class="fundamental_tracker_sec_right tech_tracker_sec_right">
+									<div class="fundamental_tracker_sec_right_row">
+										<span>
+											<p>EMA (20)</p>
+											<h5>8978.00</h5>
+										</span>
+										<span>
+											<p>SMA (20)</p>
+											<h5>44.08</h5>
+										</span>
+									</div>
+									<div class="fundamental_tracker_sec_right_row">
+										<span>
+											<p>RSI (14)</p>
+											<h5>8978.00</h5>
+										</span>
+										<span>
+											<p>Awesome Osc</p>
+											<h5>-44.08</h5>
+										</span>
+									</div>
+									<div class="fundamental_tracker_sec_right_row">
+										<span>
+											<p>MACD (12-90)</p>
+											<h5>-30.00</h5>
+										</span>
+										<span>
+											<p>CCI (20)</p>
+											<h5>108.38</h5>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer buy_pop_up_footer" style="background: no-repeat;">
+					<div class="buy_pop_right_btn depth_btm_right" style="float: right;">
+						<button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalbuy_pop">Buy</button>
+						<button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalsell_pop">Sell</button>
+						<button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid dashboard_top_bar" style="padding-right: 15px !important;padding-left: 15px !important;">
+		<div class="row">
+			<div class="col-md-4 left_status_bar">
+				<h2>NIFTY 50   <span>14566.55</span>   0.85 %</h2>
+				<h2>SENSEX  <span>14566.55</span>   0.85 %</h2>
+			</div>
+			<div class="col-md-8">
+				<div class="topnav dashboard_topnav" id="myTopnav">
+					<a href="/dashboard" class="active">Dashboard</a>
+					<a href="/holdings">Holdings</a>
+					<a href="/positions">Positions</a>
+					<a href="/mutual_funds">Mutual Funds</a>
+					<a href="/learning">Learning</a>
+					<a href="/research_reports">Research Reports</a>
+					<a href="/money">Money Mgt.</a>
+					<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					<i class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="right_top_icons">
+					<a href="#"><img src="/images/download_icon.svg"/></a>
+					<a href="#" class="notification_icon"><img src="/images/notification_icon.svg"/><span>1</span></a>
+					<a href="/profile" class="profile_pic"><img src="/images/profile_pic.svg"/></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" style="padding-right: 15px !important;padding-left: 15px !important;">
+		<div class="row">
+			<div class="col-md-4 dashboard_left_bar">
+				<div class="dashboard_left_row_dat">
+					<form class="secrch_bar">
+						<i class="fas fa-search"></i> <input type="text" placeholder="Search eg. infy bse, nifty fut weekly, gold mcx ">
+					</form>
+				</div>
+				<div class="dashboard_left_hover_up_sec">
+					<div class="dashboard_left_row_dat">
+						<h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+					</div>
+					<div class="dashboard_left_row_dat_hover">
+						<div class="dash_left_row_data_hover">
+							<button class="buy_btn_dash_left_data" data-toggle="modal" data-target="#exampleModalbuy">B</button>
+							<button class="buy_btn_dash_left_data_red" data-toggle="modal" data-target="#exampleModalsell">S</button>
+							<button class="" onclick="window.location.href='dashboard_chart'"><img src="/images/line_chart.svg" /></button>
+							<button class="depth_drop" onclick="myFunction1();"><img src="/images/op_lines.svg" /></button>
+							<button class=""><img src="/images/delete.svg" /></button>
+							<button onclick="myFunction()" class="dropbtn"><img src="/images/3_dot_line.svg" /></button>
+							<div id="myDropdown" class="dropdown-content three_dote_drop_down_list" >
+								<a href="#"><img src="/images/pin_drop_list.svg"/>Pin <button>2</button> <button>1</button></a>
+								<a href="" data-toggle="modal" data-target="#exampleModalbuy_pop"><img src="/images/gtt_drop_list.svg"/>Create GTT <span>/ GTC</span></a>
+								<a href="#"><img src="/images/line_chart.svg"/>Chart <button><img src="/images/pop_left_chart.svg"/></button></a>
+								<a href="" data-toggle="modal" data-target="#exampleModalfunda_pop"><img src="/images/funda_drop_list.svg"/>Fundamentals</a>
+								<a href="" data-toggle="modal" data-target="#exampleModaltech_pop"><img src="/images/technical_drop_list.svg"/>Technicals</a>
+								<a href="#"><img src="/images/ex_drop_list.svg"/>Set alert <button class="set_alert"><img src="/images/pop_left_chart_two.svg"/></button></a>
+							</div>
+						</div>
+					</div>
+					<div id="drop_depth" class="market_depth_main_div">
+						<div class="market_depth_drop">
+							<div class="market_depth_half">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">BID</th>
+											<th scope="col">ORDERS</th>
+											<th scope="col">QTY.</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>11</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>13</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>599</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>2</td>
+											<td>1150</td>
+										</tr>
+										<tr>
+											<td>TOTAL</td>
+											<td></td>
+											<td>3,16,088</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="market_depth_half market_depth_half_red">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">BID</th>
+											<th scope="col">ORDERS</th>
+											<th scope="col">QTY.</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>11</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>13</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>1</td>
+											<td>599</td>
+										</tr>
+										<tr>
+											<td>1247.80</td>
+											<td>2</td>
+											<td>1150</td>
+										</tr>
+										<tr>
+											<td>TOTAL</td>
+											<td></td>
+											<td>3,16,088</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="view_all_depth"><button><i class="fas fa-chevron-down"></i> View 20 Depth</button></div>
+						</div>
+						<div class="market_depth_drop_second_sec">
+							<div class="market_depth_half">
+								<h2>Open <span>1250.55</span></h2>
+								<h2>Low <span>1241.00</span></h2>
+								<h2>Volume <span>48,00,683</span></h2>
+								<h2>LTQ <span>1</span></h2>
+								<h2>Lower Circuit<span>1115.15</span></h2>
+							</div>
+							<div class="market_depth_half">
+								<h2>Hight<span>1267.99</span></h2>
+								<h2>Prev. Close<span>1267.99</span></h2>
+								<h2>Avg. Price<span>1267.99</span></h2>
+								<h2>LTT<span>2021-0201 13:28:32</span></h2>
+								<h2>Uper Circuit<span>1362.95</span></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat">
+					<h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat">
+					<h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat">
+					<h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat">
+					<h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+				<div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+					<h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+				</div>
+			</div>
+			<div class="col-md-8 dashboard_right_bar">
+				<div class="dash_top">
+					<a href="#"><img src="/images/download_btn.svg"/>Download</a>
+				</div>
+				<div class="table_sec">
+					<table class="table table_holding">
+						<thead class="table_dash" >
+							<tr>
+								<th scope="col">
+									Time 
+									<div class="table_btn_area">
+										<button><img src="/images/table_arrow_u.svg"/></button>
+										<button><img src="/images/table_arrow_d.svg"/></button>
+									</div>
+								</th>
+								<th scope="col">
+									Type
+									<div class="table_btn_area">
+										<button><img src="/images/table_arrow_u.svg"/></button>
+										<button><img src="/images/table_arrow_d.svg"/></button>
+									</div>
+								</th>
+								<th scope="col">
+									Script Name
+									<div class="table_btn_area">
+										<button><img src="/images/table_arrow_u.svg"/></button>
+										<button><img src="/images/table_arrow_d.svg"/></button>
+									</div>
+								</th>
+								<th scope="col">Qty.</th>
+								<th scope="col">Entry Price</th>
+								<th scope="col">CMP</th>
+								<th scope="col">SL</th>
+								<th scope="col">Target</th>
+								<th scope="col">TSL</th>
+								<th scope="col">Cur. Val</th>
+								<th scope="col">P&L</th>
+								<th scope="col">
+									Status
+									<div class="table_btn_area">
+										<button><img src="/images/table_arrow_u.svg"/></button>
+										<button><img src="/images/table_arrow_d.svg"/></button>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="col">No Data</th>
+							</tr>
+						</tbody>
+					</table>
+					<div class="number_calls">
+						<h6>Total Number of Calls</h6>
+						<h2>0</h2>
+					</div>
+					<div class="number_calls">
+						<h6>P&L</h6>
+						<h2>0</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<%- include("partials/footer") %>

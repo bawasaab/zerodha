@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container">
+  <!-- <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div> -->
+
+  <div class="row">
+        <form action="/action_page.php">
+            <div class="col-md-12">
+                <div class="form-group">
+                <label for="email">Search:</label>
+                <input type="text" class="form-control" placeholder="Enter str to search" id="str" name="str">
+                </div>
+                
+                <button type="button" name="btn" id="btn" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Trading Symbol</th>
+                <th>instrument type</th>
+                <th>segment</th>
+                <th>exchange</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="insdata">
+              <!-- <tr>
+                <td>John</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+              </tr>
+              <tr>
+                <td>July</td>
+              </tr> -->
+            </tbody>
+        </table>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $('#btn').on( 'click', () => {
+      let str = $('#str').val();
+      console.log('str', str);
+
+      $.ajax({
+        url: `http://localhost:3000/zerodha/getInstruments?str=${str}`,
+        method: 'GET',
+        dataType: 'JSON',
+        data: {
+          offset: 0
+        },
+        success: function( retdata ) {
+          console.log('retdata', retdata);
+
+          let htm = ``;
+
+          retdata.data.forEach(element => {
+              
+            htm += `
+              <tr>
+                <td>${element.name}</td>
+                <td>${element.tradingsymbol}</td>
+                <td>${element.instrument_type}</td>
+                <td>${element.segment}</td>
+                <td>${element.exchange}</td>
+                <td>
+                  <button type="button" onclick="addToWatchList( ${element.instrument_token} );" class="btn btn-primary">+</button>
+                </td>
+              </tr>
+            `;
+          });
+          $('#insdata').html( htm );
+        },
+        error: function(e){
+          console.log(e);
+        }
+      });
+    } );
+
+    addToWatchList = ( instrument_token ) => {
+
+      console.log('instrument_token', instrument_token);
+      $.ajax({
+        url: `http://localhost:3000/zerodha/add-watchlist`,
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+          offset: 0,
+          instrument_token: instrument_token,
+          user_id : 1
+        },
+        success: function( retdata ) {
+          console.log('retdata', retdata);
+          if( retdata.resCode == "200" ) {
+            alert(retdata.msg);
+          } else {
+            alert(retdata.msg);
+          }
+        },
+        error: function(e){
+          console.log(e);
+        }
+      });
+
+    }
+</script>
+
+</body>
+</html>

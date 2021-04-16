@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <!-- STEP 5 starts here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // socket implementation 4 starts
+        var socket = io();
+        socket.on('connect', () => {
+          socket_id =  socket.id; // an alphanumeric id...
+          console.log('socket_id',socket_id);
+          let msg = 'Hello socket';
+          socket.emit('message', msg);
+      
+      
+          socket.on( 'tick', ( in_data ) => {
+            console.log('in_data', in_data);
+            console.log('in_data[0].last_price', in_data[0].last_price);
+            $('#live_data').text( in_data[0].last_price );
+          } );
+
+          socket.on( 'seconds', () => {
+            console.log('tick received');
+          } )
+        });
+    </script>
+    <!-- STEP 5 ends here -->
+  </body>
+</html>

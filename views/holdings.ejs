@@ -1,0 +1,573 @@
+<%- include("partials/header") %>
+  <!-- depth Modal -->
+  <div class="modal fade" id="exampleModaldepth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content buy_pop_up">
+      
+      <div class="modal-body">
+            <div class="buy_pop_up_head depth_pop_head">
+                <h4>TATACHEM<span>NSE </span></h4>
+
+                <h3>502.50<span>+8.45 (+1.71%)</span></h3>
+            </div>
+
+
+            <div id="drop_depth" class="market_depth_main_div" style="display: block !important;padding: 0 10px;">
+
+            <div class="market_depth_drop">
+                <div class="market_depth_half">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">BID</th>
+                            <th scope="col">ORDERS</th>
+                            <th scope="col">QTY.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>11</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>13</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>599</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>2</td>
+                            <td>1150</td>
+                        </tr>
+
+                        <tr>
+                            <td>TOTAL</td>
+                            <td></td>
+                            <td>3,16,088</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="market_depth_half market_depth_half_red">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">BID</th>
+                            <th scope="col">ORDERS</th>
+                            <th scope="col">QTY.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>11</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>13</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>1</td>
+                            <td>599</td>
+                        </tr>
+
+                        <tr>
+                            <td>1247.80</td>
+                            <td>2</td>
+                            <td>1150</td>
+                        </tr>
+
+                        <tr>
+                            <td>TOTAL</td>
+                            <td></td>
+                            <td>3,16,088</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="view_all_depth"><button><i class="fas fa-chevron-down"></i> View 20 Depth</button></div>
+            </div>
+    
+            <div class="market_depth_drop_second_sec">
+                <div class="market_depth_half">
+                    <h2>Open <span>1250.55</span></h2>
+                    <h2>Low <span>1241.00</span></h2>
+                    <h2>Volume <span>48,00,683</span></h2>
+                    <h2>LTQ <span>1</span></h2>
+                    <h2>Lower Circuit<span>1115.15</span></h2>
+                </div> 
+
+                <div class="market_depth_half">
+                    <h2>Hight<span>1267.99</span></h2>
+                    <h2>Prev. Close<span>1267.99</span></h2>
+                    <h2>Avg. Price<span>1267.99</span></h2>
+                    <h2>LTT<span>2021-0201 13:28:32</span></h2>
+                    <h2>Uper Circuit<span>1362.95</span></h2>
+                </div> 
+            </div>
+
+            </div>
+      </div>
+      <div class="modal-footer buy_pop_up_footer">
+        <div class="buy_pop_right_btn depth_btm_left">
+          <button type="button" class="buy_btn">Create GTT</button>
+        </div>
+
+          <div class="buy_pop_right_btn depth_btm_right">
+              <button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalbuy_pop">Buy</button>
+              <button type="button" class="buy_btn custom-close" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalsell_pop">Sell</button>
+              <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- authorisation Modal -->
+  <div class="modal fade" id="exampleModalauth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content buy_pop_up">
+      
+      <div class="modal-body">
+            <div class="buy_pop_up_head authoris_pop_head">
+                <h4>Authorisation</h4> 
+            </div>
+
+            <div class="autho_pahara">
+                <p>Authorise your holdings at CDSL (your Demat depository) to execute sell transactions. <a href="#">Learn more</a></p>
+            </div>
+      </div>
+      <div class="modal-footer buy_pop_up_footer">
+        
+
+          <div class="buy_pop_right_btn autho_btm_btn">
+              <button type="button" class="buy_btn">Continue</button>
+              <button type="button" class="cancel_btn" data-dismiss="modal">Close</button> 
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- sell_pop_up Modal -->
+  <div class="modal fade" id="exampleModalsell_pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 650px;margin: 4rem auto !important;">
+    <div class="modal-content buy_pop_up">
+      
+      <div class="modal-body">
+          <div class="buy_pop_up_head depth_pop_head sell_pop_up_heat">
+          <h4>TATACHEM <span>NSE</span> <button>502.50</button></h4>
+
+          <span class="sell_pop_up_span"><a href="#"><img src="images/i_icon_blue.svg" /></a> <img src="images/gtt_icon.svg" style="width: 12%;"/></span>
+          </div>
+        
+            
+            <div class="buy_pop_up_tabs">
+                <div class="buy_pop_tabs_sec sell_pop_tabs_sec type_sell_pop-up">
+                    <div class="transaction-type_sell_pop-up">
+                      <h5>Transaction type</h5>
+                      <div class="buy_pop_tab_panel_top transition_trigger_type">
+                        <input type="radio"/> <label>Buy</label>
+                        <input type="radio" checked/> <label>Sell</label>
+                      </div>
+                    </div>
+
+                    <div class="trigger-type_sell_pop-up">
+                      <h5>Trigger type</h5>
+                      <div class="buy_pop_tab_panel_top transition_trigger_type">
+                        <input type="radio"/> <label>Single</label>
+                        <input type="radio" checked/> <label>OCO</label>
+                      </div>
+
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+                        invidunt ut labore et dolore magna aliquyam erat,Lorem ipsum dolor sit amet, consetetur 
+                        sadipscing elitr, sed diam nonumy eirmod tempor invidunt.,</p>
+                    </div>
+                </div>
+
+                <div class="buy_pop_tab_panel">
+                  
+
+                  <div class="buy_pop_tab_panel_second transition_trigger_type_four_sec transition_trigger_type_four_sec_brdr">
+
+                      <div class="transition_trigger_top_bar">
+                        <span>
+                          <h6>Stoploss</h6>
+                        </span>
+
+                        <span>
+                          <input type="radio" checked/> <label>CNC</label>
+                        </span>
+
+                        <span>
+                          <input type="radio" checked/> <label>LIMIT</label>
+                        </span>
+                      </div>
+
+                      <span>
+                          <label>Trigger Price</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                              <option selected=""></option>
+                              <option value="">1</option>
+                              <option value="">2</option>
+                              <option value="">3</option>
+                          </select>
+                      </span>
+
+                      <span>
+                          <label class="place_type">Places Order <i class="fas fa-arrow-right"></i></label>
+                      </span>
+
+                      <span>
+                          <label>Qty.</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                              <option selected=""></option>
+                              <option value="">0</option>
+                              <option value="">0</option>
+                              <option value="">0</option>
+                          </select>
+                      </span>
+
+                      <span>
+                        <label>Price</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected=""></option>
+                            <option value="">0</option>
+                            <option value="">0</option>
+                            <option value="">0</option>
+                        </select>
+                      </span>
+
+                      <div class="transition_trigger_ltp">
+                        <span>-5</span><h6>% of LTP</h6>
+                      </div>
+
+                      
+                  </div>
+
+                  <div class="buy_pop_tab_panel_second transition_trigger_type_four_sec transition_trigger_type_four_sec_brdr">
+
+                    <div class="transition_trigger_top_bar">
+                      <span>
+                        <h6>Target</h6>
+                      </span>
+
+                      <span>
+                        <input type="radio" checked/> <label>CNC</label>
+                      </span>
+
+                      <span>
+                        <input type="radio" checked/> <label>LIMIT</label>
+                      </span>
+                    </div>
+
+                    <span>
+                        <label>Trigger Price</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected=""></option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                        </select>
+                    </span>
+
+                    <span>
+                        <label class="place_type">Places Order <i class="fas fa-arrow-right"></i></label>
+                    </span>
+
+                    <span>
+                        <label>Qty.</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected=""></option>
+                            <option value="">0</option>
+                            <option value="">0</option>
+                            <option value="">0</option>
+                        </select>
+                    </span>
+
+                    <span>
+                      <label>Price</label>
+                      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected=""></option>
+                          <option value="">0</option>
+                          <option value="">0</option>
+                          <option value="">0</option>
+                      </select>
+                    </span>
+
+                    <div class="transition_trigger_ltp">
+                      <span>5</span><h6>% of LTP</h6>
+                    </div>
+
+                    
+                </div>
+                </div>
+
+            </div>
+      </div>
+      <div class="modal-footer buy_pop_up_footer sell_pop_holding">
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+            invidunt ut labore et dolore magna aliquyam erat.</p>
+
+          <div class="buy_pop_right_btn">
+              <button type="button" class="buy_btn sell_btn">Place</button>
+              <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button> 
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="container-fluid dashboard_top_bar" style="padding-right: 15px !important;padding-left: 15px !important;">
+    <div class="row">
+      <div class="col-md-4 left_status_bar">
+          <h2>NIFTY 50   <span>14566.55</span>   0.85 %</h2>
+          <h2>SENSEX  <span>14566.55</span>   0.85 %</h2>
+        </div>
+        
+        <div class="col-md-8">
+          <div class="topnav dashboard_topnav" id="myTopnav">
+              <a href="/dashboard">Dashboard</a>
+              <a href="/holding" class="active">Holdings</a>
+              <a href="/positions">Positions</a>
+              <a href="/mutual_funds">Mutual Funds</a>
+              <a href="/learning">Learning</a>
+              <a href="/research_reports">Research Reports</a>
+              <a href="/money">Money Mgt.</a>
+              
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                  <i class="fa fa-bars"></i>
+              </a>
+          </div>
+
+          <div class="right_top_icons">
+          <a href="#"><img src="images/download_icon.svg"/></a>
+          <a href="#" class="notification_icon"><img src="images/notification_icon.svg"/><span>1</span></a>
+          <a href="/profile" class="profile_pic"><img src="images/profile_pic.svg"/></a>
+          </div>
+
+        </div>	
+      </div>
+  </div>
+
+  <div class="container-fluid" style="padding-right: 15px !important;padding-left: 15px !important;">
+  <div class="row">
+      <div class="col-md-4 dashboard_left_bar">
+
+          <div class="dashboard_left_row_dat">
+              <form class="secrch_bar">
+                  <i class="fas fa-search"></i> <input type="text" placeholder="Search eg. infy bse, nifty fut weekly, gold mcx ">
+              </form>
+          </div>
+
+          <div class="dashboard_left_row_dat">
+              <h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat">
+              <h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat">
+              <h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+          </div>
+          <div class="dashboard_left_row_dat">
+              <h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat">
+              <h2><span class="list_head">GOLDBEES </span> <span class="list_percentage">0.47% </span><span class="list_arrow"><i class="fas fa-chevron-up"></i></span>  <span class="list_last_spn">42.99</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+
+          <div class="dashboard_left_row_dat dashboard_left_row_dat_red">
+              <h2><span class="list_head">HDFCBANK </span> <span class="list_percentage">-0.79%</span> <span class="list_arrow"><i class="fas fa-chevron-down"></i></span>  <span class="list_last_spn">1492.00</span></h2>
+          </div>
+      </div>
+
+
+      <div class="col-md-8 dashboard_right_bar">
+            <div class="dash_top">
+                <a href="" data-toggle="modal" data-target="#exampleModalauth"><img src="images/lock.svg"/>Authorisation</a>
+                <a href="#"><img src="images/view_reports.svg"/>View Reports</a>
+                <a href="#"><img src="images/download_btn.svg"/>Download</a>
+            </div>
+
+            <div class="table_sec">
+                  <div class="serch_top_bar">
+                        <h2>Holdings <span>(4)</span></h2>
+
+                        <select >
+                          <option >All stocks</option>
+                          <option >Kite Only</option>
+                          <option >Small Case</option>
+                          <option >Mutual Funds</option>
+                        </select>
+
+                        <form class="secrch_bar_right">
+                            <input type="text" placeholder="Search"> <i class="fas fa-search"></i>
+                        </form>
+                  </div>
+
+                  <table class="table table_holding">
+                      <thead>
+                        <tr>
+                          <th scope="col">Instrument</th>
+                          <th scope="col">Qty.</th>
+                          <th scope="col">Avg. Cost</th>
+                          <th scope="col">LTP</th>
+                          <th scope="col">Cur. Val</th>
+                          <th scope="col">P&L</th>
+                          <th scope="col">Net Chg.</th>
+                          <th scope="col">Day Chg.</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>BURGERKING <button onclick="myFunction()" class="dropbtn"><img src="images/3_dot_line_blue.svg" /></button>
+                          
+                            <div id="myDropdown" class="dropdown-content three_dote_drop_down_list holding_drop_down_list" style="width: 100%; float: left;">
+                              <a href="#"><img src="images/minus.svg"/>Exit</a>
+                              <a href="#"><img src="images/plus.svg"/>Add</a>
+                              <a href="#"><img src="images/view.svg"/>View Breakdown</a>
+                              <a href="" data-toggle="modal" data-target="#exampleModaldepth"><img src="images/market_depth.svg"/>Market depth</a>
+                              <a href="#"><img src="images/market_watch.svg"/>Add to marketwatch </a>
+                              <a href="#"><img src="images/gtt_drop_list.svg"/>Create GTT <span>/ GTC</span></a>
+                              <a href="#"><img src="images/line_chart.svg"/>Chart <button><img src="images/pop_left_chart.svg"/></button></a>
+                              <a href="#"><img src="images/funda_drop_list.svg"/>Fundamentals</a>
+                              <a href="#"><img src="images/technical_drop_list.svg"/>Technicals</a>
+                              <a href="#"><img src="images/ex_drop_list.svg"/>Set alert <button class="set_alert"><img src="images/pop_left_chart_two.svg"/></button></a>
+                          </div>
+                          </td>
+                          <td>360</td>
+                          <td>204.92</td>
+                          <td>143.60</td>
+                          <td>51.696.00</td>
+                          <td><span class="holding_color_red">-22.074.75</span></td>
+                          <td><span class="holding_color_red">-29.92%</span></td>
+                          <td><span class="holding_color_red">-1.07%</span></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>IDEA</td>
+                          <td>360</td>
+                          <td>204.92</td>
+                          <td>143.60</td>
+                          <td>51.696.00</td>
+                          <td><span class="holding_color_green">35.75</span></td>
+                          <td><span class="holding_color_green">+32.92%</span></td>
+                          <td>0.00%</td>
+                        </tr>
+
+
+                        <tr>
+                          <td>BURGERKING </td>
+                          <td>360</td>
+                          <td>204.92</td>
+                          <td>143.60</td>
+                          <td>51.696.00</td>
+                          <td><span class="holding_color_red">-22.074.75</span></td>
+                          <td><span class="holding_color_red">-29.92%</span></td>
+                          <td><span class="holding_color_red">-1.07%</span></td>
+                        </tr>
+
+
+                        <tr>
+                          <td>IDEA</td>
+                          <td>360</td>
+                          <td>204.92</td>
+                          <td>143.60</td>
+                          <td>51.696.00</td>
+                          <td><span class="holding_color_green">35.75</span></td>
+                          <td><span class="holding_color_green">+32.92%</span></td>
+                          <td>0.00%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    
+
+
+                  <div class="holding_range">
+                      <h6>74,624.55</h6>
+                      <h2>Total investment</h2>
+                  </div> 
+
+                  <div class="holding_range">
+                      <h6>52,326.55</h6>
+                      <h2>Current value</h2>
+                    </div> 
+
+                    <div class="holding_range holding_range_color_chng">
+                      <h6>-22,065.65 (-29.65%)</h6>
+                      <h2>P&L</h2>
+                    </div> 
+
+
+
+                    <div class="holding_range_bar">
+                        <img src="images/holding_range_bar.svg"/>  
+                    </div>
+
+                    <div class="holding_radio">
+                        <input type="radio" checked/> <label>Current value</label>
+                        <input type="radio"/> <label>Investment value</label>
+                        <input type="radio"/> <label>P&L</label>
+                    </div>
+            </div>
+      </div>
+  </div>
+  </div>
+<%- include("partials/footer") %>

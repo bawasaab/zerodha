@@ -1,0 +1,68 @@
+    <!-- STEP 5 starts here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // socket implementation 4 starts
+        var socket = io();
+        socket.on('connect', () => {
+            socket_id =  socket.id; // an alphanumeric id...
+            console.log('socket_id',socket_id);
+            let msg = 'Hello socket';
+            socket.emit('message', msg);
+        
+        
+            socket.on( 'tick', ( in_data ) => {
+                console.log('in_data', in_data);
+                console.log('in_data[0].last_price', in_data[0].last_price);
+                $('#live_data').text( in_data[0].last_price );
+            } );
+        });
+    </script>
+    <!-- STEP 5 ends here -->
+    <!--====================================== pop_list_show ========================================= -->
+    <script>
+        $(document).ready(function () {
+        $('.dashboard_left_row_dat_hover').hide();
+        $('.dashboard_left_hover_up_sec').hover(function () {
+            $(this).find('.dashboard_left_row_dat_hover').show();
+        }, function () {
+            $(this).find('.dashboard_left_row_dat_hover').hide();
+        });
+        });
+    </script>
+    <!--====================================== pop_list_show ========================================= -->
+    <!--====================================== market depth ========================================= -->
+    <script>
+        function myFunction1() {
+        var x = document.getElementById("drop_depth");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+    </script>
+    <!--====================================== market depth ========================================= -->
+    <!--====================================== 3 dot drop down ========================================= -->
+    <script>
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
+    <!--====================================== 3 dot drop down ========================================= -->
+    </body>
+</html>

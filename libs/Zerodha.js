@@ -127,7 +127,7 @@ module.exports = class Zerodha {
     }
 
     subscribe() {
-        var items = [408065];
+        var items = [56530439];
         this.ticker.subscribe(items);
         this.ticker.setMode(ticker.modeFull, items);
     }

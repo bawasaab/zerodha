@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     request_token: DataTypes.STRING,
     access_token: DataTypes.STRING,
     public_token: DataTypes.STRING,
-    public_token: DataTypes.STRING
+    public_token: DataTypes.STRING,
+    api_key: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Zerodha_token',

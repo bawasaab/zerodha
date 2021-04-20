@@ -214,7 +214,7 @@ module.exports = class ZerodhaController {
     init_KiteTicker() {
 
         let api_key = 'tbrzulogl3yckk3b';
-        let access_token = 'vioo24kzSX17B6vOVK1LJsKmjhuNXtw0';
+        let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
         console.log('api_key', api_key);
         console.log('access_token', access_token);
         // this.ws = new WebSocket(`wss://ws.kite.trade?api_key=${this.api_key}&access_token=${this.access_token}`);

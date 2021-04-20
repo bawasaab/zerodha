@@ -17,6 +17,9 @@ module.exports = {
       public_token: {
         type: Sequelize.STRING
       },
+      api_key: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

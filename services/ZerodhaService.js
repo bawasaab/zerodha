@@ -45,6 +45,8 @@ module.exports = class ZerodhaService {
 
         try {
 
+            let truncate = await Zerodha_token.destroy({ truncate : true, cascade: false });
+            console.log('truncate', truncate);
             let result = await Zerodha_token.create( in_data );
             return result;
         } catch( ex ) {

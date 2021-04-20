@@ -97,7 +97,8 @@ module.exports = class UsersController {
                 user: ZerodhaLibsObj.user,
                 setAccessToken: ZerodhaLibsObj.kc.setAccessToken( response.access_token ),
                 setAccessToken: ZerodhaLibsObj.setAccessToken(),
-                getDetails: ZerodhaLibsObj.getDetails()
+                getDetails: ZerodhaLibsObj.getDetails(),
+                api_key: ZerodhaLibsObj.api_key
             };
         })
         .then( async (result) => {
@@ -106,7 +107,9 @@ module.exports = class UsersController {
                 request_token: result.request_token,
                 access_token: result.access_token,
                 public_token: result.public_token,
+                api_key: result.api_key
             };
+            console.log('in_data', in_data);
             let out = await ZerodhaServiceObj.insertZerodhaTokens( in_data );
             let response = {
                 'data': result

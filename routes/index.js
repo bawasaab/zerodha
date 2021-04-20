@@ -3,6 +3,7 @@ var router = express.Router();
 
 var usersRouter = require('./users');
 var zerodhaRouter = require('./zerodha');
+var authRouter = require('./authRouter');
 
 
 /* GET home page. */
@@ -40,6 +41,7 @@ router.get( '/profile', ( req, res, next ) => {
 
 router.use('/users', usersRouter);
 router.use('/zerodha', zerodhaRouter);
+router.use('/auth', authRouter);
 
 
 module.exports = router;

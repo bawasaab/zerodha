@@ -2,80 +2,152 @@ const jwt = require('jsonwebtoken');
 const User = require('../models').User;
 // const accesses = require('../config/access');
 const constans = require('../config/constants');
+let Validator = require('validatorjs');
+
+let UserService = require('../services/UserService');
+let UserServiceObj = new UserService();
+
+let ResponseService = require('../services/ResponseService');
+let ResponseServiceObj = new ResponseService();
+
+let $this = '';
 
 module.exports = class AuthController {
 
     constructor(){
         console.log('inside AuthController controller constructor');
+        $this = this;
+    }
+
+    getFirstError( validation ) {
+        let errors = validation.errors.all();
+        let firstErr = '';
+        for ( const property in errors ) {
+            firstErr = errors[property];
+            break;
+        }
+        return firstErr[0];
     }
 
     signUp(req, res, next) {
 
-        User.create(
-            req.body
-        )
-        .then(function (result) {
-            if (result) {
+        try {
+
+            let in_data = req.body;
+            let rules = {
+                first_name: 'required',
+                email: 'required|email',
+                password: 'required|min:6'
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return ResponseServiceObj.sendException( res, {
+                    msg : $this.getFirstError( validation )
+                } );
+            }
+
+            UserServiceObj.insertUser( in_data )
+            .then( (result) => {
 
                 let userData = {
                     "id": result.id,
                     "first_name": result.first_name,
-                    "last_name": result.last_name,
                     "email": result.email,
-                    "dob": result.dob,
-                    "role": result.role,
-                    "status": result.status,
-                    "deletedAt": result.deletedAt,
                     "createdAt": result.createdAt,
                     "updatedAt": result.updatedAt
                 };
-                jwt.sign({userData}, constans.JWT_SECRET, { expiresIn: 60 * 60 }, (err, token) => {
-                    res.status(200).send({ err: [], token: 'bearer '+ token, user: userData });
-                });
-            } else {
-                response.status(400).send('Error in insert new record');
-            }
-        })
-        .catch((error) => {
-    
-            res.status(200).send({ err: error });
-        });
+                jwt.sign({userData}, constans.JWT_SECRET, { expiresIn: 60 * 60 }, async (err, token) => {
+                    return ResponseServiceObj.sendResponse( res, {
+                        msg : 'Record inserted successfully',
+                        data : {
+                            token: token,
+                            user: userData
+                        },
+                        cnt: 1
+                    } );
+                });                
+            } )
+            .catch( (ex) => {
+                return ResponseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } );
+            
+        } catch( ex ) {
+
+            return ResponseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
     }
 
     signIn( req, res, next ) {
 
-        var email = req.body.email;
+        try {
+
+            let in_data = req.body;
+            var email = req.body.email;
+            var password = req.body.password;
+
+            let rules = {
+                email: 'required|email',
+                password: 'required|min:6'
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+
+                return ResponseServiceObj.sendException( res, {
+                    msg : $this.getFirstError( validation )
+                } );
+            }
     
-        User.findOne({ where: { email: email } })
+            User.findOne({ where: { email: email } })
             .then((result) => {
     
                 if (result === null) {
     
                     res.status(200).send({ err: ["Record not found!"] });
                 } else {
-    
+                    
+                    if( password !== result.password ) {
+
+                        return ResponseServiceObj.sendException( res, {
+                            msg : 'Invalid Password'
+                        } ); 
+                    }
                     let userData = {
                         "id": result.id,
                         "first_name": result.first_name,
-                        "last_name": result.last_name,
                         "email": result.email,
-                        "dob": result.dob,
-                        "role": result.role,
-                        "status": result.status,
-                        "deletedAt": result.deletedAt,
                         "createdAt": result.createdAt,
                         "updatedAt": result.updatedAt
                     };
     
                     jwt.sign({userData}, constans.JWT_SECRET, { expiresIn: 60 * 60 }, (err, token) => {
-                        res.status(200).send({ err: [], token: 'bearer '+ token, user: userData });
+                        return ResponseServiceObj.sendResponse( res, {
+                            msg : 'Login successfully',
+                            data : {
+                                token: token,
+                                user: userData
+                            },
+                            cnt: 1
+                        } );
                     });
                 }
             })
-            .catch((error) => {
+            .catch( (error) => {
     
-                res.status(200).send({ err: error });
+                return ResponseServiceObj.sendException( res, {
+                    msg : error.toString()
+                } ); 
             });
+        } catch( ex ) {
+
+            return ResponseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } ); 
+        }
     }
 
     signOut(req, res, next) {}

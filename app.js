@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var SocketLib = require('./libs').SocketLib;
 var SocketLibObj = new SocketLib();
@@ -19,6 +20,7 @@ var SocketLibObj = new SocketLib();
 var indexRouter = require('./routes/index');
 
 var app = express();
+app.use(cors());
 
 /**
  * socket step 2 starts

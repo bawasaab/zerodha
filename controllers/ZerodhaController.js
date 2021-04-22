@@ -252,7 +252,7 @@ module.exports = class ZerodhaController {
             // $this.init_KiteTicker();
             // SBIN // 779521
             // ICICI // 1270529
-            var items = [779521];
+            var items = [779521, 1270529];
             $this.ticker.subscribe(items);
             $this.ticker.setMode(ticker.modeFull, items);
 

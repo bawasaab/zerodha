@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const Instruments = require('../models/').Instruments;
 const Zerodha_token = require('../models/').Zerodha_token;
 const moment = require('moment');
@@ -14,15 +14,21 @@ module.exports = class ZerodhaService {
             if( in_str ) {
 
                 result = await Instruments.findAll({
-                    attributes: ['id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'],
+                    attributes: [
+                        // [Sequelize.fn('DISTINCT', Sequelize.col('tradingsymbol')), 'tradingsymbol'],
+                        'id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'
+                    ],
                     where: {
                         name: {
-                            [Op.like]: `%${in_str}%`
+                            // [Op.like]: `%${in_str}%`
+                            [Op.like]: `${in_str}%`
                         }
                     },
                     offset: 0, 
-                    limit: 10,
-                    order: [['id', 'DESC']],
+                    limit: 10000,
+                    order: [
+                        ['tradingsymbol', 'ASC']
+                    ],
                     raw: true 
                 });
             } else {
@@ -31,7 +37,9 @@ module.exports = class ZerodhaService {
                     attributes: ['id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'],
                     offset: 0, 
                     limit: 10,
-                    order: [['id', 'DESC']],
+                    order: [
+                        ['tradingsymbol', 'ASC']
+                    ],
                     raw: true 
                 });
             }

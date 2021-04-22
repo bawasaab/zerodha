@@ -213,17 +213,30 @@ module.exports = class ZerodhaController {
 
     init_KiteTicker() {
 
-        let api_key = 'tbrzulogl3yckk3b';
-        let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
-        console.log('api_key', api_key);
-        console.log('access_token', access_token);
+        // let api_key = 'tbrzulogl3yckk3b';
+        // let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
+        // console.log('api_key', api_key);
+        // console.log('access_token', access_token);
         // this.ws = new WebSocket(`wss://ws.kite.trade?api_key=${this.api_key}&access_token=${this.access_token}`);
-        $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
-        console.log( 'ticker', $this.ticker );
 
-        $this.ticker.connect();
-        $this.ticker.on("ticks", $this.onTicks);
-        $this.ticker.on("connect", $this.subscribe);
+        ZerodhaServiceObj.getZerodhaToken( {} )
+        .then( ( result ) => {
+
+            console.log('result', result.request_token);
+
+            let api_key = result.api_key;
+            let access_token = result.access_token;
+
+            $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
+            console.log( 'ticker', $this.ticker );
+
+            $this.ticker.connect();
+            $this.ticker.on("ticks", $this.onTicks);
+            $this.ticker.on("connect", $this.subscribe);
+        } )
+        .catch( (ex) => {
+            console.log('ex.toString()', ex.toString());
+        } );
     }
    
     onTicks(ticks) {

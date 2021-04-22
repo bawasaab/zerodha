@@ -29,7 +29,12 @@ app.server = server;
 
 // Create the Socket IO server on 
 // the top of http server
-const socket = socketio(server);
+const socket = socketio(server, {
+  cors: {
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+  }
+});
 /**
  * socket step 2 ends
  */

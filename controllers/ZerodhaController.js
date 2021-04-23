@@ -280,13 +280,13 @@ module.exports = class ZerodhaController {
             } )
             .catch( async (ex) => {
                 return await $this.sendException( res, {
-                    msg: ex
+                    msg: ex.toString()
                 } );
             } );
         } catch( ex ) {
 
             return $this.sendException( res, {
-                msg: ex
+                msg: ex.toString()
             } );
         }
     }
@@ -297,7 +297,16 @@ module.exports = class ZerodhaController {
             
             UserSubscriptionServiceObj.getUserWatchList()
             .then( async ( result ) => {
+                return result;
+            } )
+            .then( async ( result ) => {
 
+                let instrument_tokens = result.map( row => row.instrument_token );
+                return instrument_tokens;
+            } )
+            .then( async ( instrument_tokens ) => {
+                
+                let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );                
                 return await $this.sendResponse( res, {
                     msg: 'Record found',
                     data: result
@@ -305,13 +314,13 @@ module.exports = class ZerodhaController {
             } )
             .catch( async (ex) => {
                 return await $this.sendException( res, {
-                    msg: ex
+                    msg: ex.toString()
                 } );
             } );
         } catch( ex ) {
 
             return $this.sendException( res, {
-                msg: ex
+                msg: ex.toString()
             } );
         }
     }

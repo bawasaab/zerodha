@@ -290,4 +290,29 @@ module.exports = class ZerodhaController {
             } );
         }
     }
+
+    getUserWatchList( req, res, next ) {
+
+        try {
+            
+            UserSubscriptionServiceObj.getUserWatchList()
+            .then( async ( result ) => {
+
+                return await $this.sendResponse( res, {
+                    msg: 'Record found',
+                    data: result
+                } );
+            } )
+            .catch( async (ex) => {
+                return await $this.sendException( res, {
+                    msg: ex
+                } );
+            } );
+        } catch( ex ) {
+
+            return $this.sendException( res, {
+                msg: ex
+            } );
+        }
+    }
 }

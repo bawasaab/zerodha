@@ -33,4 +33,15 @@ module.exports = class UserSubscriptionService {
             throw ex;
         }
     }
+
+    async getUserWatchList() {
+        try {
+            console.log('inside getUserWatchList');
+            const result = await UserSubscription.findAll();
+            console.log('result', result);
+            return result;
+        } catch( ex ) {
+            throw ex;
+        }
+    }
 }   

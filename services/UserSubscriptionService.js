@@ -52,7 +52,7 @@ module.exports = class UserSubscriptionService {
 
             const result = await Instruments.findAll({
                 where: {
-                  id: {
+                instrument_token: {
                     [Op.in]: instrument_tokens
                   }
                 }

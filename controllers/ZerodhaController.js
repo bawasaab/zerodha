@@ -305,8 +305,7 @@ module.exports = class ZerodhaController {
                 return instrument_tokens;
             } )
             .then( async ( instrument_tokens ) => {
-                
-                let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );                
+                let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );
                 return await $this.sendResponse( res, {
                     msg: 'Record found',
                     data: result

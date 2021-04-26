@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const UserSubscription = require('../models').UserSubscription;
+const Instruments = require('../models').Instruments;
 
 module.exports = class UserSubscriptionService {
 
@@ -28,6 +29,34 @@ module.exports = class UserSubscriptionService {
         try {
 
             const result = await UserSubscription.create(in_data);
+            return result;
+        } catch( ex ) {
+            throw ex;
+        }
+    }
+
+    async getUserWatchList() {
+        try {
+            console.log('inside getUserWatchList');
+            const result = await UserSubscription.findAll();
+            console.log('result', result);
+            return result;
+        } catch( ex ) {
+            throw ex;
+        }
+    }
+
+    async getInstrumentsByInstrumentTokens( instrument_tokens ) {
+
+        try {
+
+            const result = await Instruments.findAll({
+                where: {
+                instrument_token: {
+                    [Op.in]: instrument_tokens
+                  }
+                }
+            });
             return result;
         } catch( ex ) {
             throw ex;

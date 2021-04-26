@@ -31,4 +31,6 @@ router.get( '/getInstruments', ZerodhaControllerObj.searchInstruments);
 
 router.get( '/getTokens', ZerodhaControllerObj.getZerodhaTokens);
 
+router.get( '/getUserWatchList', ZerodhaControllerObj.getUserWatchList);
+
 module.exports = router;

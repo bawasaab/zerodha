@@ -213,21 +213,34 @@ module.exports = class ZerodhaController {
 
     init_KiteTicker() {
 
-        let api_key = 'tbrzulogl3yckk3b';
-        let access_token = 'vioo24kzSX17B6vOVK1LJsKmjhuNXtw0';
-        console.log('api_key', api_key);
-        console.log('access_token', access_token);
+        // let api_key = 'tbrzulogl3yckk3b';
+        // let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
+        // console.log('api_key', api_key);
+        // console.log('access_token', access_token);
         // this.ws = new WebSocket(`wss://ws.kite.trade?api_key=${this.api_key}&access_token=${this.access_token}`);
-        $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
-        console.log( 'ticker', $this.ticker );
 
-        $this.ticker.connect();
-        $this.ticker.on("ticks", $this.onTicks);
-        $this.ticker.on("connect", $this.subscribe);
+        ZerodhaServiceObj.getZerodhaToken( {} )
+        .then( ( result ) => {
+
+            console.log('result', result.request_token);
+
+            let api_key = result.api_key;
+            let access_token = result.access_token;
+
+            $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
+            console.log( 'ticker', $this.ticker );
+
+            $this.ticker.connect();
+            $this.ticker.on("ticks", $this.onTicks);
+            $this.ticker.on("connect", $this.subscribe);
+        } )
+        .catch( (ex) => {
+            console.log('ex.toString()', ex.toString());
+        } );
     }
    
     onTicks(ticks) {
-        // console.log("Ticks", ticks);
+        console.log("inside on Ticks", ticks);
         SocketLibObj.tick( ticks );
     }
 
@@ -239,7 +252,7 @@ module.exports = class ZerodhaController {
             // $this.init_KiteTicker();
             // SBIN // 779521
             // ICICI // 1270529
-            var items = [779521];
+            var items = [779521, 1270529];
             $this.ticker.subscribe(items);
             $this.ticker.setMode(ticker.modeFull, items);
 
@@ -267,13 +280,46 @@ module.exports = class ZerodhaController {
             } )
             .catch( async (ex) => {
                 return await $this.sendException( res, {
-                    msg: ex
+                    msg: ex.toString()
                 } );
             } );
         } catch( ex ) {
 
             return $this.sendException( res, {
-                msg: ex
+                msg: ex.toString()
+            } );
+        }
+    }
+
+    getUserWatchList( req, res, next ) {
+
+        try {
+            
+            UserSubscriptionServiceObj.getUserWatchList()
+            .then( async ( result ) => {
+                return result;
+            } )
+            .then( async ( result ) => {
+
+                let instrument_tokens = result.map( row => row.instrument_token );
+                return instrument_tokens;
+            } )
+            .then( async ( instrument_tokens ) => {
+                let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );
+                return await $this.sendResponse( res, {
+                    msg: 'Record found',
+                    data: result
+                } );
+            } )
+            .catch( async (ex) => {
+                return await $this.sendException( res, {
+                    msg: ex.toString()
+                } );
+            } );
+        } catch( ex ) {
+
+            return $this.sendException( res, {
+                msg: ex.toString()
             } );
         }
     }

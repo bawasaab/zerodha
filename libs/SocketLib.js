@@ -29,7 +29,7 @@ module.exports = class SocketLib {
 
     tick( in_data ) {
         console.log('inside tick');
-        // $this.socket.emit( 'tick', in_data );
+        $this.socket.emit( 'tick', in_data );
     }
 
     autoSend( socket ) {

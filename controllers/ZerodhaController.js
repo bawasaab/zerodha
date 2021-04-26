@@ -240,7 +240,7 @@ module.exports = class ZerodhaController {
     }
    
     onTicks(ticks) {
-        // console.log("Ticks", ticks);
+        console.log("inside on Ticks", ticks);
         SocketLibObj.tick( ticks );
     }
 

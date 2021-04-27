@@ -10,11 +10,11 @@ module.exports = class SocketLib {
 
     connection( socket ) {
 
-        $this.socket = socket;
         console.log('inside socket connect');
+        $this.socket = socket;
         socket.on( 'disconnect', $this.disconnect );
         socket.on( 'message', $this.message );
-        $this.autoSend( socket );
+        // $this.autoSend( socket );
         socket.on( 'tick', $this.tick );
     }
 

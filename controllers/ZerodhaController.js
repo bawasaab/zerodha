@@ -25,7 +25,7 @@ module.exports = class ZerodhaController {
     constructor() {
         console.log('inside ZerodhaController');
         $this = this;
-        $this.init_KiteTicker();
+        // $this.init_KiteTicker();
     }
 
     sendResponse( res, in_data ) {
@@ -67,7 +67,8 @@ module.exports = class ZerodhaController {
                 $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
                 console.log( '$this.ticker', $this.ticker );
     
-                $this.userSubscriptions = [779521, 1270529];
+                // $this.userSubscriptions = [424961, 340481];
+                console.log('init_KiteTicker() $this.userSubscriptions', $this.userSubscriptions);
                 $this.ticker.connect();
                 $this.ticker.on("ticks", $this.onTicks);
                 $this.ticker.on("connect", $this.subscribe);
@@ -251,23 +252,16 @@ module.exports = class ZerodhaController {
     }
 
     subscribe() {
-    // subscribeInstruments( req, res, next ) {
 
         try {
 
-            // $this.init_KiteTicker();
-            // SBIN // 779521
-            // ICICI // 1270529
             // var items = [779521, 1270529];
             let items = $this.userSubscriptions;
             $this.ticker.subscribe(items);
             $this.ticker.setMode($this.ticker.modeFull, items);
         } catch( ex ) {
-        
-            // $this.sendException( res, {
-            //     msg : ex.toString()
-            // });
             console.log('subscribe() catch', ex.toString());
+            throw ex;
         }
     }
 
@@ -309,7 +303,7 @@ module.exports = class ZerodhaController {
             .then( async ( result ) => {
 
                 console.log('inside 2 then getUserWatchList');
-                let instrument_tokens = result.map( row => row.instrument_token );
+                let instrument_tokens = result.map( row => parseInt( row.instrument_token ) );
                 return instrument_tokens;
             } )
             .then( async ( instrument_tokens ) => {

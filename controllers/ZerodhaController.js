@@ -20,6 +20,8 @@ let $this;
 
 module.exports = class ZerodhaController {
 
+    userSubscriptions = [];
+
     constructor() {
         console.log('inside ZerodhaController');
         $this = this;
@@ -44,6 +46,38 @@ module.exports = class ZerodhaController {
             msg : in_data.hasOwnProperty('msg') ? in_data.msg : 'unknown',
             data : in_data.hasOwnProperty('data') ? in_data.data : [],
         });
+    }
+
+    init_KiteTicker() {
+
+        // let api_key = 'tbrzulogl3yckk3b';
+        // let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
+        // console.log('api_key', api_key);
+        // console.log('access_token', access_token);
+        // this.ws = new WebSocket(`wss://ws.kite.trade?api_key=${this.api_key}&access_token=${this.access_token}`);
+        console.log('inside init_KiteTicker');
+        ZerodhaServiceObj.getZerodhaToken( {} )
+        .then( ( result ) => {
+        console.log('inside getZerodhaToken');
+            if( result ) {
+                console.log('inside getZerodhaToken result');
+                let api_key = result.api_key;
+                let access_token = result.access_token;
+    
+                $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
+                console.log( '$this.ticker', $this.ticker );
+    
+                $this.userSubscriptions = [779521, 1270529];
+                $this.ticker.connect();
+                $this.ticker.on("ticks", $this.onTicks);
+                $this.ticker.on("connect", $this.subscribe);
+            } else {
+                throw 'Zerodha tokens not found.';
+            }
+        } )
+        .catch( (ex) => {
+            console.log('ex.toString()', ex.toString());
+        } );
     }
     
     async getInstrumentsFromCloud( req, res, next ) {
@@ -211,34 +245,6 @@ module.exports = class ZerodhaController {
         }
     }
 
-    init_KiteTicker() {
-
-        // let api_key = 'tbrzulogl3yckk3b';
-        // let access_token = 'VAOVlEK8kOiJIjQFO5DiD0wBdFSyHUec';
-        // console.log('api_key', api_key);
-        // console.log('access_token', access_token);
-        // this.ws = new WebSocket(`wss://ws.kite.trade?api_key=${this.api_key}&access_token=${this.access_token}`);
-
-        ZerodhaServiceObj.getZerodhaToken( {} )
-        .then( ( result ) => {
-
-            console.log('result', result.request_token);
-
-            let api_key = result.api_key;
-            let access_token = result.access_token;
-
-            $this.ticker = new KiteTicker({ api_key: api_key, access_token: access_token });
-            console.log( 'ticker', $this.ticker );
-
-            $this.ticker.connect();
-            $this.ticker.on("ticks", $this.onTicks);
-            $this.ticker.on("connect", $this.subscribe);
-        } )
-        .catch( (ex) => {
-            console.log('ex.toString()', ex.toString());
-        } );
-    }
-   
     onTicks(ticks) {
         console.log("inside on Ticks", ticks);
         SocketLibObj.tick( ticks );
@@ -252,16 +258,16 @@ module.exports = class ZerodhaController {
             // $this.init_KiteTicker();
             // SBIN // 779521
             // ICICI // 1270529
-            var items = [779521, 1270529];
+            // var items = [779521, 1270529];
+            let items = $this.userSubscriptions;
             $this.ticker.subscribe(items);
-            $this.ticker.setMode(ticker.modeFull, items);
-
+            $this.ticker.setMode($this.ticker.modeFull, items);
         } catch( ex ) {
         
             // $this.sendException( res, {
             //     msg : ex.toString()
             // });
-            console.log('ex.toString()', ex.toString());
+            console.log('subscribe() catch', ex.toString());
         }
     }
 
@@ -297,14 +303,27 @@ module.exports = class ZerodhaController {
             
             UserSubscriptionServiceObj.getUserWatchList()
             .then( async ( result ) => {
+                console.log('inside 1 then getUserWatchList');
                 return result;
             } )
             .then( async ( result ) => {
 
+                console.log('inside 2 then getUserWatchList');
                 let instrument_tokens = result.map( row => row.instrument_token );
                 return instrument_tokens;
             } )
             .then( async ( instrument_tokens ) => {
+
+                console.log('inside 3 then getUserWatchList');
+                console.log('instrument_tokens', instrument_tokens);
+                $this.userSubscriptions = instrument_tokens;
+                return instrument_tokens;
+            } )
+            .then( async( instrument_tokens ) => {
+
+                console.log('inside 4 then getUserWatchList');
+                $this.init_KiteTicker();
+
                 let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );
                 return await $this.sendResponse( res, {
                     msg: 'Record found',
@@ -312,12 +331,15 @@ module.exports = class ZerodhaController {
                 } );
             } )
             .catch( async (ex) => {
+
+                console.log('inside 1 catch getUserWatchList');
                 return await $this.sendException( res, {
                     msg: ex.toString()
                 } );
             } );
         } catch( ex ) {
 
+            console.log('inside 2 catch getUserWatchList');
             return $this.sendException( res, {
                 msg: ex.toString()
             } );

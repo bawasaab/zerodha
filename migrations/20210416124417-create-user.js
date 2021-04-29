@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      role: {
+        type: Sequelize.ENUM('ADVISOR', 'INVESTOR'),
+        allowNull: false
+      },
       status: {
         type: Sequelize.ENUM('OPEN', 'CLOSE', 'DELETED'),
         allowNull: false
@@ -33,6 +37,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

@@ -36,8 +36,10 @@ module.exports = class AuthController {
             let in_data = req.body;
             let rules = {
                 first_name: 'required',
+                last_name: 'required',
                 email: 'required|email',
-                password: 'required|min:6'
+                password: 'required|min:6',
+                role: 'required|in:ADVISOR,INVESTOR'
             };
             let validation = new Validator(in_data, rules);
             if( validation.fails() ) {
@@ -53,7 +55,11 @@ module.exports = class AuthController {
                 let userData = {
                     "id": result.id,
                     "first_name": result.first_name,
+                    "last_name": result.last_name,
                     "email": result.email,
+                    "password": result.password,
+                    "role": result.role,
+                    "status": result.status,
                     "createdAt": result.createdAt,
                     "updatedAt": result.updatedAt
                 };
@@ -119,7 +125,11 @@ module.exports = class AuthController {
                     let userData = {
                         "id": result.id,
                         "first_name": result.first_name,
+                        "last_name": result.last_name,
                         "email": result.email,
+                        "password": result.password,
+                        "role": result.role,
+                        "status": result.status,
                         "createdAt": result.createdAt,
                         "updatedAt": result.updatedAt
                     };
@@ -177,6 +187,62 @@ module.exports = class AuthController {
             });
         }else{
             res.status(403).send({ err: 'Header is not defined.' });            
+        }
+    }
+
+    tokenDecode( req, res, next ) {
+
+        try {
+
+            //Request header with authorization key
+            const bearerHeader = req.headers['authorization'];
+            
+            //Check if there is  a header
+            if(typeof bearerHeader !== 'undefined') {
+                const bearer = bearerHeader.split(' ');
+
+                //Get Token arrray by spliting
+                const bearerToken = bearer[1];
+                req.token = bearerToken;
+        
+                jwt.verify(req.token, constans.JWT_SECRET, (err, authData)=>{
+        
+                    if(err){
+                        // res.status(403).send({ err: err });
+                        return res.send({
+                            status: 403,
+                            code: 403,
+                            msg: err.toString(),
+                            result: []
+                        });
+                    }else{
+                        
+                        req.authData = authData;
+                        return res.send({
+                            status: 200,
+                            code: 200,
+                            msg: 'Token decoded successfully.',
+                            result: authData
+                        });
+                    }
+                });
+            }else{
+                // res.status(403).send({ err: 'Header is not defined.' });            
+                return res.send({
+                    status: 403,
+                    code: 403,
+                    msg: 'Header is not defined.',
+                    result: []
+                });
+            }
+        } catch( ex ) {
+
+            res.send({
+                status: 403,
+                code: 403,
+                msg: ex.toString(),
+                result: []
+            });
         }
     }
 

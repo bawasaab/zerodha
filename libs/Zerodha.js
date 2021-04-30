@@ -7,29 +7,32 @@ module.exports = class Zerodha {
     
     constructor() {
 
-        this.api_key = '*****';
-        this.api_secret_key = '*****';
-        this.request_token = '*****';
+        this.api_key = 'tbrzulogl3yckk3b';
+        this.api_secret_key = 'qyycdku2t31el1c2lrq685qeyx49rfpx';
+        this.request_token = 'EpEymwLG3R54IYyEfHL0PPpGUAAIVg8S';
 
-        this.access_token = '*****';
-        this.public_token = '*****';
+        // access_token: 'TyjvA9FA8yDR2rzW3Iws7GWUBl2jvufN',
+        // public_token: 'hRbKfzRU18l7kcKOXo7uK6geGgFay1MB',
+
+        this.access_token = 'vioo24kzSX17B6vOVK1LJsKmjhuNXtw0';
+        this.public_token = 'YaDS2OGBhSCVduQ1k26g3zTU5iUcYEuQ';
 
         
-        this.connectLoginLink = 'https://kite.trade/connect/login?api_key=*****;&v=3';
+        this.connectLoginLink = 'https://kite.trade/connect/login?api_key=tbrzulogl3yckk3b&v=3';
         this.kiteDeveloperLink = 'https://developers.kite.trade';
         this.clientCredentials = {
-            user_id : '*****',
-            pwd : '*****', 
-            pin : '*****'
+            user_id : 'IH7939',
+            pwd : 'ganpati1234', 
+            pin : '150983'
         };
         this.delevoperCredentials = {
-            email : '*****',
-            pwd : '*****',
+            email : 'prernasharma.alwar@gmail.com',
+            pwd : 'ganpati@312'
         };
         this.kiteLoginCredentials = { 
-            userId : '*****',
-            pwd : '*****',
-            pin : '*****'
+            userId : 'IH7939',
+            pwd : 'IH7939',
+            pin : '150983',
         };
 
         this.kc =  new KiteConnect({        

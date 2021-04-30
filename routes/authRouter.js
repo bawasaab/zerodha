@@ -33,6 +33,10 @@ router.post('/signOut', [
   AuthControllerObj.signOut
 ]);
 
+router.post('/decode/token', [
+  AuthControllerObj.tokenDecode
+]);
+
 // router.get('/load/signUp', function(req, res) {
 //     res.render('signup.ejs');
 // });

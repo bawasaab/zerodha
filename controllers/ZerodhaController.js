@@ -204,7 +204,7 @@ module.exports = class ZerodhaController {
 
         try {
 
-            let user_id = 1;
+            let user_id = req.body.user_id;
             let instrument_token = req.body.instrument_token;
             let in_data = {
                 user_id : user_id,
@@ -294,8 +294,8 @@ module.exports = class ZerodhaController {
     getUserWatchList( req, res, next ) {
 
         try {
-            
-            UserSubscriptionServiceObj.getUserWatchList()
+            let user_id = req.query.user_id;
+            UserSubscriptionServiceObj.getUserWatchList( user_id )
             .then( async ( result ) => {
                 console.log('inside 1 then getUserWatchList');
                 return result;

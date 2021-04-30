@@ -204,7 +204,7 @@ module.exports = class ZerodhaController {
 
         try {
 
-            let user_id = 1;
+            let user_id = req.body.user_id;
             let instrument_token = req.body.instrument_token;
             let in_data = {
                 user_id : user_id,

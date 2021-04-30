@@ -21,6 +21,10 @@ var storage = multer.diskStorage({
    
 var upload = multer({ storage: storage });
 
+router.get('/isEmailExists/:email', [
+  AuthControllerObj.isEmailExists
+]);
+
 router.post('/signUp', upload.single('profile_pic'), [
   AuthControllerObj.signUp
 ]);

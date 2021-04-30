@@ -29,6 +29,49 @@ module.exports = class AuthController {
         return firstErr[0];
     }
 
+    isEmailExists( req, res, next ) {
+
+        try{
+            let email = req.params.email;
+            let rules = {
+                email: 'required|email'
+            };
+            let in_data = {
+                email: email
+            };
+            let validation = new Validator(in_data, rules);
+            if( validation.fails() ) {
+                throw $this.getFirstError( validation );
+            }
+
+            UserServiceObj.isEmailExists( email )
+            .then( (result) => {
+                let msg = '';
+                if( result > 0 ) {
+                    throw 'Email exists exists try another.';
+                } else {
+                    return ResponseServiceObj.sendResponse( res, {
+                        msg : 'Email is available.',
+                        data : {
+                            isExists: result
+                        }
+                    } );
+                }
+            } )
+            .catch( (ex) => {
+                return ResponseServiceObj.sendException( res, {
+                    msg : ex.toString()
+                } );
+            } )
+
+        } catch( ex ) {
+
+            return ResponseServiceObj.sendException( res, {
+                msg : ex.toString()
+            } );
+        }
+    }
+
     signUp(req, res, next) {
 
         try {

@@ -140,4 +140,28 @@ module.exports = class UsersService {
             throw ex;
         }
     }
+
+    async isEmailExists( email ) {
+
+        try {
+
+            let result = await User.count(
+                { 
+                    where: { 
+                        email: email,
+                        status: { 
+                            [Op.ne]: 'DELETED' 
+                        } 
+                    } 
+                }
+            );
+            if (result > 0) {    
+                return true;
+            } else {
+                return false;
+            }
+        } catch( ex ) {
+            throw ex;
+        }
+    }
 }

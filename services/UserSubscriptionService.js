@@ -35,10 +35,9 @@ module.exports = class UserSubscriptionService {
         }
     }
 
-    async getUserWatchList() {
+    async getUserWatchList( user_id ) {
         try {
-            console.log('inside getUserWatchList');
-            const result = await UserSubscription.findAll();
+            const result = await UserSubscription.findAll( { where: { user_id: user_id } } );
             console.log('result', result);
             return result;
         } catch( ex ) {

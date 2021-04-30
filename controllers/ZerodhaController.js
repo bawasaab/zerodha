@@ -265,6 +265,24 @@ module.exports = class ZerodhaController {
         }
     }
 
+    unsubscribe( req, res, next ) {
+
+        try {
+
+            let instrumentStrings = req.query.instrumentStrings;
+            let items = instrumentStrings.split('-');
+            $this.ticker.unsubscribe(items);
+
+            return $this.sendResponse( res, {
+                msg: 'Instrument unsubscribed.'
+            } );
+        } catch( ex ) {
+            return $this.sendException( res, {
+                msg: ex.toString()
+            } );
+        }
+    }
+
     getZerodhaTokens( req, res, next ) {
 
         try {

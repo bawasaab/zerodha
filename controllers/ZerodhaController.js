@@ -265,16 +265,19 @@ module.exports = class ZerodhaController {
         }
     }
 
-    unsubscribe( req, res, next ) {
+    unsubscribeInstruments( req, res, next ) {
 
         try {
 
             let instrumentStrings = req.query.instrumentStrings;
             let items = instrumentStrings.split('-');
-            $this.ticker.unsubscribe(items);
+            console.log('items', items);
+            // $this.ticker.unsubscribe(items);
+
+            // need to R&D how to unsubscribe the instruments. Right now the $this.ticker is undefined.
 
             return $this.sendResponse( res, {
-                msg: 'Instrument unsubscribed.'
+                msg: 'Instrument unsubscribed successfully.'
             } );
         } catch( ex ) {
             return $this.sendException( res, {

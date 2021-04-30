@@ -33,4 +33,6 @@ router.get( '/getTokens', ZerodhaControllerObj.getZerodhaTokens);
 
 router.get( '/getUserWatchList', ZerodhaControllerObj.getUserWatchList);
 
+router.get( '/unsubscribeInstruments', ZerodhaControllerObj.unsubscribeInstruments );
+
 module.exports = router;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 12:00 PM
+-- Generation Time: May 11, 2021 at 01:55 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -71,7 +71,12 @@ INSERT INTO `usersubscriptions` (`id`, `user_id`, `instrument_token`, `createdAt
 (29, '1', '270076934', '2021-05-11 09:56:46', '2021-05-11 09:56:46'),
 (30, '1', '321027', '2021-05-11 09:56:50', '2021-05-11 09:56:50'),
 (31, '1', '27587842', '2021-05-11 09:58:59', '2021-05-11 09:58:59'),
-(32, '1', '27588354', '2021-05-11 09:59:07', '2021-05-11 09:59:07');
+(32, '1', '27588354', '2021-05-11 09:59:07', '2021-05-11 09:59:07'),
+(33, '1', '27587586', '2021-05-11 11:52:47', '2021-05-11 11:52:47'),
+(34, '1', '27588098', '2021-05-11 11:52:56', '2021-05-11 11:52:56'),
+(35, '1', '58503687', '2021-05-11 11:54:23', '2021-05-11 11:54:23'),
+(36, '1', '56729351', '2021-05-11 11:54:32', '2021-05-11 11:54:32'),
+(37, '1', '57828103', '2021-05-11 11:54:42', '2021-05-11 11:54:42');
 
 --
 -- Indexes for dumped tables
@@ -91,7 +96,7 @@ ALTER TABLE `usersubscriptions`
 -- AUTO_INCREMENT for table `usersubscriptions`
 --
 ALTER TABLE `usersubscriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

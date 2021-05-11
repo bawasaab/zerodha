@@ -359,7 +359,7 @@ module.exports = class ZerodhaController {
             .then( async( instrument_tokens ) => {
 
                 console.log('inside 4 then getUserWatchList');
-                // $this.init_KiteTicker();
+                $this.init_KiteTicker();
 
                 let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );
                 return await $this.sendResponse( res, {

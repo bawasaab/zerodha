@@ -268,16 +268,38 @@ module.exports = class ZerodhaController {
     unsubscribeInstruments( req, res, next ) {
 
         try {
-
             let instrumentStrings = req.query.instrumentStrings;
             let items = instrumentStrings.split('-');
             console.log('items', items);
             // $this.ticker.unsubscribe(items);
 
-            // need to R&D how to unsubscribe the instruments. Right now the $this.ticker is undefined.
+            ZerodhaServiceObj.getZerodhaToken( {} )
+            .then( async ( result ) => {
+            console.log('inside getZerodhaToken');
+                if( result ) {
+                    console.log('inside getZerodhaToken result');
+                    let api_key = result.api_key;
+                    let access_token = result.access_token;
 
-            return $this.sendResponse( res, {
-                msg: 'Instrument unsubscribed successfully.'
+                    let unsubscribeTicker = new KiteTicker({ api_key: api_key, access_token: access_token });
+                    console.log('unsubscribeTicker', unsubscribeTicker);
+                    unsubscribeTicker.connect();
+                    let unsubscribeTickerResult = await unsubscribeTicker.unsubscribe(items);
+                    console.log('unsubscribeTickerResult', unsubscribeTickerResult);
+                    unsubscribeTicker.disconnect();
+
+                    // need to R&D how to unsubscribe the instruments. Right now the $this.ticker is undefined.
+
+                    return await $this.sendResponse( res, {
+                        msg: 'Instrument unsubscribed successfully.',
+                        data: unsubscribeTickerResult
+                    } );
+                } else {
+                    throw 'Zerodha tokens not found.';
+                }
+            } )
+            .catch( (ex) => {
+                console.log('ex.toString()', ex.toString());
             } );
         } catch( ex ) {
             return $this.sendException( res, {
@@ -337,7 +359,7 @@ module.exports = class ZerodhaController {
             .then( async( instrument_tokens ) => {
 
                 console.log('inside 4 then getUserWatchList');
-                $this.init_KiteTicker();
+                // $this.init_KiteTicker();
 
                 let result = await UserSubscriptionServiceObj.getInstrumentsByInstrumentTokens( instrument_tokens );
                 return await $this.sendResponse( res, {

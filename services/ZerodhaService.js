@@ -7,7 +7,7 @@ module.exports = class ZerodhaService {
 
     constructor() {}
 
-    async searchInstruments( in_str ) {
+    async searchInstrumentsBckup( in_str ) {
 
         try {
             let result;
@@ -18,16 +18,24 @@ module.exports = class ZerodhaService {
                         // [Sequelize.fn('DISTINCT', Sequelize.col('tradingsymbol')), 'tradingsymbol'],
                         'id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'
                     ],
-                    where: {
-                        name: {
-                            // [Op.like]: `%${in_str}%`
-                            [Op.like]: `${in_str}%`
-                        }
+                    $where: {
+
+                        $or: [
+                            {
+                                name: {
+                                    // [Op.like]: `%${in_str}%`
+                                    [Op.like]: `${in_str}%`
+                                },
+                                // tradingsymbol: {
+                                //     [Op.like]: `${in_str}%`
+                                // }
+                            }
+                        ],
                     },
                     offset: 0, 
                     limit: 10000,
                     order: [
-                        ['tradingsymbol', 'ASC']
+                        ['name', 'ASC']
                     ],
                     raw: true 
                 });
@@ -35,10 +43,80 @@ module.exports = class ZerodhaService {
 
                 result = await Instruments.findAll({
                     attributes: ['id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'],
+                    $where: {
+
+                        $or: [
+                            {
+                                name: {
+                                    // [Op.like]: `%${in_str}%`
+                                    [Op.like]: `${in_str}%`
+                                },
+                                // tradingsymbol: {
+                                //     [Op.like]: `${in_str}%`
+                                // }
+                            }
+                        ],
+                    },
                     offset: 0, 
                     limit: 10,
                     order: [
                         ['tradingsymbol', 'ASC']
+                    ],
+                    raw: true 
+                });
+            }
+            return result;
+        } catch( ex ) {
+            throw ex;
+        }
+    }
+
+    async searchInstruments( in_str ) {
+
+        try {
+            let result;
+            if( in_str ) {
+                console.log('inside if');
+                result = await Instruments.findAll({
+                    attributes: [
+                        // [Sequelize.fn('DISTINCT', Sequelize.col('tradingsymbol')), 'tradingsymbol'],
+                        'id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'
+                    ],
+                    where: {
+                        [Op.or]: {
+                            name: {
+                                [Op.like]: `${in_str}%`,
+                            },
+                            tradingsymbol: {
+                                [Op.like]: `${in_str}%`,
+                            },
+                        }
+                    },
+                    offset: 0, 
+                    limit: 10000,
+                    order: [
+                        ['name', 'ASC']
+                    ],
+                    raw: true 
+                });
+            } else {
+                console.log('inside else');
+                result = await Instruments.findAll({
+                    attributes: ['id', 'instrument_token', 'exchange_token', 'tradingsymbol', 'name', 'last_price', 'expiry', 'strike', 'tick_size', 'lot_size', 'instrument_type', 'segment', 'exchange', 'createdAt', 'updatedAt', 'deletedAt'],
+                    where: {
+                        [Op.or]: {
+                            name: {
+                                [Op.like]: `${in_str}%`,
+                            },
+                            tradingsymbol: {
+                                [Op.like]: `${in_str}%`,
+                            },
+                        }
+                    },
+                    offset: 0, 
+                    limit: 10,
+                    order: [
+                        ['name', 'ASC']
                     ],
                     raw: true 
                 });

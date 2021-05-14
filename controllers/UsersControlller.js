@@ -57,6 +57,7 @@ module.exports = class UsersController {
         let loginUrl = ZerodhaLibsObj.kc.getLoginURL();
         // console.log('loginUrl', loginUrl);
         // $this.getLoginURL = this.kc.getLoginURL();
+
         res.render( 'login', {
             url : loginUrl
         } );
@@ -114,12 +115,23 @@ module.exports = class UsersController {
             let response = {
                 'data': result
             };
-            return $this.sendResponse( res, response );
+            // return $this.sendResponse( res, response );
+
+            res.render( 'AdminLoginSuccess', {
+                success: true,
+                data: result
+            } );
         } )
         .catch(function(err) {
             console.log('generateSession err', err);
-            return $this.sendException( res, {
-                msg: err
+            // return $this.sendException( res, {
+            //     success: true,
+            //     data: err
+            // } );
+
+            res.render( 'AdminLoginSuccess', {
+                success: false,
+                data: err
             } );
         });
     }
